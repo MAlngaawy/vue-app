@@ -38,4 +38,17 @@ export async function authFetch(input: RequestInfo, init: RequestInit = {}) {
   const authHeaders = getAuthHeaders();
   const headers = { ...(init.headers || {}), ...(authHeaders || {}) };
   return fetch(input, { ...init, headers });
+}
+
+export async function logout() {
+  const refreshToken = localStorage.getItem('refreshToken');
+  if (refreshToken) {
+    await fetch(`${API_URL}/logout`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...getAuthHeaders() },
+      body: JSON.stringify({ refreshToken }),
+    });
+  }
+  localStorage.removeItem('accessToken');
+  localStorage.removeItem('refreshToken');
 } 

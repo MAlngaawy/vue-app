@@ -32,6 +32,9 @@
             <span class="relative z-10">Go to Profile</span>
             <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-sky-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </router-link>
+          <button v-if="isLoggedIn" @click="handleLogout" class="group relative px-8 py-4 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold text-lg rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden">
+            <span class="relative z-10">Log Out</span>
+          </button>
         </div>
         <div class="mt-16 text-gray-600 dark:text-gray-400 text-sm">
           <p>Ready to get started? Choose your path above</p>
@@ -42,6 +45,26 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-const isLoggedIn = computed(() => !!localStorage.getItem('accessToken'));
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { logout } from '../api/auth';
+
+const router = useRouter();
+const isLoggedIn = ref(!!localStorage.getItem('accessToken'));
+
+function updateLoginState() {
+  isLoggedIn.value = !!localStorage.getItem('accessToken');
+}
+
+async function handleLogout() {
+  await logout();
+  updateLoginState();
+  router.push('/');
+}
+
+window.addEventListener('storage', updateLoginState); // In case of multi-tab logout
+
+onMounted(() => {
+  updateLoginState();
+});
 </script> 

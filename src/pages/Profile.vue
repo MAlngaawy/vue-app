@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-import { authFetch, getAccessToken } from '../api/auth';
+import { authFetch, getAccessToken, logout } from '../api/auth';
 
 const router = useRouter();
 const loading = ref(true);
 const error = ref('');
 const user = ref<any>(null);
+
+async function handleLogout() {
+  await logout();
+  router.push('/');
+}
 
 onMounted(async () => {
   if (!getAccessToken()) {
@@ -14,7 +19,7 @@ onMounted(async () => {
     return;
   }
   try {
-    const res = await authFetch('http://localhost:4000/api/profile');
+    const res = await authFetch(`${import.meta.env.VITE_API_URL || 'http://localhost:4000'}/api/profile`);
     if (!res.ok) throw await res.json();
     const data = await res.json();
     user.value = data.user;
@@ -49,6 +54,7 @@ onMounted(async () => {
           <span class="font-semibold text-gray-700 dark:text-gray-200">Created At:</span>
           <span class="ml-2 text-gray-900 dark:text-white">{{ new Date(user.createdAt).toLocaleString() }}</span>
         </div>
+        <button @click="handleLogout" class="mt-8 w-full py-3 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300">Log Out</button>
       </div>
     </div>
   </div>
