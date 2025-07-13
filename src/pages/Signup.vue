@@ -30,6 +30,8 @@ async function onSubmit(e: Event) {
     const res = await signup(username.value, email.value, password.value);
     saveTokens(res);
     error.value = '';
+    // Dispatch custom event to notify navbar
+    window.dispatchEvent(new CustomEvent('auth-state-changed'));
     router.push('/');
   } catch (err: any) {
     error.value = err.message || 'Signup failed';

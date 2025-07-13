@@ -32,9 +32,6 @@
             <span class="relative z-10">Go to Profile</span>
             <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-sky-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </router-link>
-          <button v-if="isLoggedIn" @click="handleLogout" class="group relative px-8 py-4 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold text-lg rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden cursor-pointer">
-            <span class="relative z-10">Log Out</span>
-          </button>
         </div>
         <div class="mt-16 text-gray-600 dark:text-gray-400 text-sm">
           <p>Ready to get started? Choose your path above</p>
@@ -45,26 +42,32 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
-import { logout } from '../api/auth';
+import { ref, onMounted, onUnmounted } from 'vue';
 
-const router = useRouter();
 const isLoggedIn = ref(!!localStorage.getItem('accessToken'));
 
 function updateLoginState() {
   isLoggedIn.value = !!localStorage.getItem('accessToken');
 }
 
-async function handleLogout() {
-  await logout();
+// Listen for storage events (in case of multi-tab logout)
+function handleStorageChange() {
   updateLoginState();
-  router.push('/');
 }
 
-window.addEventListener('storage', updateLoginState); // In case of multi-tab logout
+// Listen for custom auth state changes
+function handleAuthStateChange() {
+  updateLoginState();
+}
 
 onMounted(() => {
   updateLoginState();
+  window.addEventListener('storage', handleStorageChange);
+  window.addEventListener('auth-state-changed', handleAuthStateChange);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('storage', handleStorageChange);
+  window.removeEventListener('auth-state-changed', handleAuthStateChange);
 });
 </script> 
