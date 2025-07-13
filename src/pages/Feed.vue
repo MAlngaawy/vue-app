@@ -74,10 +74,21 @@
             </div>
             
             <!-- Question -->
-            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-4">
-              <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                <span v-if="question.isAnonymous" class="text-gray-400 dark:text-gray-500">
-                  Anonymous asked:
+            <div
+              :class="[
+                'rounded-lg p-4 mb-4',
+                question.isAnonymous
+                  ? 'bg-yellow-50 dark:bg-yellow-900/30 border-l-4 border-yellow-400 dark:border-yellow-500'
+                  : 'bg-gray-50 dark:bg-gray-700'
+              ]"
+            >
+              <div class="flex items-center mb-2">
+                <span v-if="question.isAnonymous" class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-yellow-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4a8 8 0 00-8 8v1a8 8 0 0016 0v-1a8 8 0 00-8-8zm0 0v2m0 8h.01"></path>
+                  </svg>
+                  <span class="text-yellow-700 dark:text-yellow-300 font-semibold bg-yellow-100 dark:bg-yellow-800/60 px-2 py-0.5 rounded mr-2">Anonymous</span>
+                  <span class="text-gray-400 dark:text-gray-500">asked:</span>
                 </span>
                 <span v-else-if="question.fromUser" class="text-gray-400 dark:text-gray-500">
                   {{ question.fromUser.username }} asked:
@@ -86,7 +97,7 @@
                   Someone asked:
                 </span>
               </div>
-              <div class="text-gray-900 dark:text-white font-medium">
+              <div :class="question.isAnonymous ? 'italic text-gray-800 dark:text-yellow-100' : 'text-gray-900 dark:text-white font-medium'">
                 {{ question.question }}
               </div>
             </div>

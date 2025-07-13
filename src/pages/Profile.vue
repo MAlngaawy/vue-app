@@ -162,13 +162,27 @@ function cancelAnswer() {
               <div 
                 v-for="question in receivedQuestions" 
                 :key="question._id"
-                class="border border-gray-200 dark:border-gray-700 rounded-lg p-6"
+                :class="[
+                  'rounded-lg p-6 border',
+                  question.isAnonymous
+                    ? 'bg-yellow-50 dark:bg-yellow-900/30 border-yellow-300 dark:border-yellow-600'
+                    : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700'
+                ]"
               >
                 <div class="flex items-start justify-between mb-4">
                   <div>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                      From: {{ question.isAnonymous ? 'Anonymous' : (question.fromUser?.username || 'Unknown') }}
-                    </p>
+                    <div class="flex items-center mb-1">
+                      <span v-if="question.isAnonymous" class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-yellow-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4a8 8 0 00-8 8v1a8 8 0 0016 0v-1a8 8 0 00-8-8zm0 0v2m0 8h.01"></path>
+                        </svg>
+                        <span class="text-yellow-700 dark:text-yellow-300 font-semibold bg-yellow-100 dark:bg-yellow-800/60 px-2 py-0.5 rounded mr-2">Anonymous</span>
+                        <span class="text-gray-400 dark:text-gray-500">asked you</span>
+                      </span>
+                      <span v-else class="text-gray-500 dark:text-gray-400">
+                        From: {{ question.fromUser?.username || 'Unknown' }}
+                      </span>
+                    </div>
                     <p class="text-xs text-gray-400 dark:text-gray-500">
                       {{ new Date(question.createdAt).toLocaleDateString() }}
                     </p>
@@ -187,7 +201,7 @@ function cancelAnswer() {
                 
                 <div class="mb-4">
                   <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Question:</h3>
-                  <p class="text-gray-700 dark:text-gray-300">{{ question.question }}</p>
+                  <p :class="question.isAnonymous ? 'italic text-gray-800 dark:text-yellow-100' : 'text-gray-700 dark:text-gray-300'">{{ question.question }}</p>
                 </div>
 
                 <div v-if="question.answer" class="mb-4">
@@ -248,13 +262,27 @@ function cancelAnswer() {
               <div 
                 v-for="question in askedQuestions" 
                 :key="question._id"
-                class="border border-gray-200 dark:border-gray-700 rounded-lg p-6"
+                :class="[
+                  'rounded-lg p-6 border',
+                  question.isAnonymous
+                    ? 'bg-yellow-50 dark:bg-yellow-900/30 border-yellow-300 dark:border-yellow-600'
+                    : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700'
+                ]"
               >
                 <div class="flex items-start justify-between mb-4">
                   <div>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                      To: {{ question.toUser?.username || 'Unknown' }}
-                    </p>
+                    <div class="flex items-center mb-1">
+                      <span v-if="question.isAnonymous" class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-yellow-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4a8 8 0 00-8 8v1a8 8 0 0016 0v-1a8 8 0 00-8-8zm0 0v2m0 8h.01"></path>
+                        </svg>
+                        <span class="text-yellow-700 dark:text-yellow-300 font-semibold bg-yellow-100 dark:bg-yellow-800/60 px-2 py-0.5 rounded mr-2">Anonymous</span>
+                        <span class="text-gray-400 dark:text-gray-500">(you asked anonymously)</span>
+                      </span>
+                      <span v-else class="text-gray-500 dark:text-gray-400">
+                        To: {{ question.toUser?.username || 'Unknown' }}
+                      </span>
+                    </div>
                     <p class="text-xs text-gray-400 dark:text-gray-500">
                       {{ new Date(question.createdAt).toLocaleDateString() }}
                     </p>
@@ -273,7 +301,7 @@ function cancelAnswer() {
                 
                 <div class="mb-4">
                   <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Your Question:</h3>
-                  <p class="text-gray-700 dark:text-gray-300">{{ question.question }}</p>
+                  <p :class="question.isAnonymous ? 'italic text-gray-800 dark:text-yellow-100' : 'text-gray-700 dark:text-gray-300'">{{ question.question }}</p>
                 </div>
 
                 <div v-if="question.answer" class="mb-4">
