@@ -59,6 +59,12 @@ onUnmounted(() => {
           <router-link to="/" class="text-gray-700 dark:text-gray-200 hover:text-sky-600 dark:hover:text-sky-400 transition-colors duration-200 cursor-pointer">
             Home
           </router-link>
+          <router-link v-if="isLoggedIn" to="/feed" class="text-gray-700 dark:text-gray-200 hover:text-sky-600 dark:hover:text-sky-400 transition-colors duration-200 cursor-pointer">
+            Feed
+          </router-link>
+          <router-link to="/users" class="text-gray-700 dark:text-gray-200 hover:text-sky-600 dark:hover:text-sky-400 transition-colors duration-200 cursor-pointer">
+            Users
+          </router-link>
           <router-link v-if="isLoggedIn" to="/profile" class="text-gray-700 dark:text-gray-200 hover:text-sky-600 dark:hover:text-sky-400 transition-colors duration-200 cursor-pointer">
             Profile
           </router-link>
