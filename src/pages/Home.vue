@@ -19,12 +19,40 @@
     <div class="relative z-10 flex items-center justify-center min-h-screen px-4">
       <div class="text-center max-w-4xl mx-auto">
         <h1 class="text-6xl md:text-8xl font-bold bg-gradient-to-r from-sky-600 via-blue-600 to-sky-500 bg-clip-text text-transparent mb-6 leading-tight">
-          Welcome Home
+          AskMe
         </h1>
-        <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-          Discover a world of possibilities with our innovative platform. 
-          Join thousands of users who are already experiencing the future of digital interaction.
+        <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
+          The ultimate platform for anonymous and open conversations. Ask questions, share answers, and discover what others are curious about.
         </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
+          <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+            <div class="w-12 h-12 bg-gradient-to-br from-sky-400 to-blue-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Ask Anonymously</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">Send questions without revealing your identity. Perfect for sensitive or curious questions.</p>
+          </div>
+          <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+            <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Share Answers</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">Answer questions from others and build meaningful connections through knowledge sharing.</p>
+          </div>
+          <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+            <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Discover Community</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">Explore questions and answers from the community. Learn from others and share your insights.</p>
+          </div>
+        </div>
         <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <router-link to="/login" class="group relative px-8 py-4 bg-gradient-to-r from-sky-600 to-blue-600 text-white font-semibold text-lg rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden cursor-pointer">
             <span class="relative z-10">Login</span>
@@ -36,7 +64,7 @@
           </router-link>
         </div>
         <div class="mt-16 text-gray-600 dark:text-gray-400 text-sm">
-          <p>Ready to get started? Choose your path above</p>
+          <p>Join thousands of users asking and answering questions every day</p>
         </div>
       </div>
     </div>

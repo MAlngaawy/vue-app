@@ -50,7 +50,7 @@ onUnmounted(() => {
         <!-- Logo/Brand -->
         <div class="flex items-center">
           <router-link to="/" class="text-2xl font-bold bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">
-            MyApp
+            AskMe
           </router-link>
         </div>
 
@@ -62,7 +62,7 @@ onUnmounted(() => {
           <router-link v-if="isLoggedIn" to="/feed" class="text-gray-700 dark:text-gray-200 hover:text-sky-600 dark:hover:text-sky-400 transition-colors duration-200 cursor-pointer">
             Feed
           </router-link>
-          <router-link to="/users" class="text-gray-700 dark:text-gray-200 hover:text-sky-600 dark:hover:text-sky-400 transition-colors duration-200 cursor-pointer">
+          <router-link v-if="isLoggedIn" to="/users" class="text-gray-700 dark:text-gray-200 hover:text-sky-600 dark:hover:text-sky-400 transition-colors duration-200 cursor-pointer">
             Users
           </router-link>
           <router-link v-if="isLoggedIn" to="/profile" class="text-gray-700 dark:text-gray-200 hover:text-sky-600 dark:hover:text-sky-400 transition-colors duration-200 cursor-pointer">
