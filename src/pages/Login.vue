@@ -48,7 +48,7 @@ async function onSubmit(e: Event) {
           <label class="block text-gray-700 dark:text-gray-200 mb-2" for="password">Password</label>
           <div class="relative">
             <input :type="showPassword ? 'text' : 'password'" id="password" v-model="password" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400 dark:bg-gray-900 dark:text-white pr-10" required />
-            <button type="button" @click="showPassword = !showPassword" tabindex="-1" class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 focus:outline-none">
+            <button type="button" @click="showPassword = !showPassword" tabindex="-1" class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 focus:outline-none cursor-pointer">
               <span v-if="showPassword" aria-label="Hide password">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-5.523 0-10-4.477-10-10 0-1.657.336-3.234.938-4.675m2.122 2.122A7.963 7.963 0 004 9c0 4.418 3.582 8 8 8 1.657 0 3.234-.336 4.675-.938m2.122-2.122A7.963 7.963 0 0020 15c0-4.418-3.582-8-8-8-1.657 0-3.234.336-4.675.938" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
               </span>
@@ -58,7 +58,7 @@ async function onSubmit(e: Event) {
             </button>
           </div>
         </div>
-        <button :disabled="loading" type="submit" class="w-full py-3 bg-gradient-to-r from-sky-600 to-blue-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-60">{{ loading ? 'Logging in...' : 'Login' }}</button>
+        <button :disabled="loading" type="submit" class="w-full py-3 bg-gradient-to-r from-sky-600 to-blue-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-60 cursor-pointer">{{ loading ? 'Logging in...' : 'Login' }}</button>
         <div v-if="error" class="text-red-500 text-center">{{ error }}</div>
       </form>
       <div class="mt-6 text-center text-gray-600 dark:text-gray-300">

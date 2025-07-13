@@ -54,7 +54,7 @@ onMounted(async () => {
           <span class="font-semibold text-gray-700 dark:text-gray-200">Created At:</span>
           <span class="ml-2 text-gray-900 dark:text-white">{{ new Date(user.createdAt).toLocaleString() }}</span>
         </div>
-        <button @click="handleLogout" class="mt-8 w-full py-3 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300">Log Out</button>
+        <button @click="handleLogout" class="mt-8 w-full py-3 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer">Log Out</button>
       </div>
     </div>
   </div>

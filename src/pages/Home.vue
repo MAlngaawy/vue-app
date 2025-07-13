@@ -20,19 +20,19 @@
           Join thousands of users who are already experiencing the future of digital interaction.
         </p>
         <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <router-link v-if="!isLoggedIn" to="/login" class="group relative px-8 py-4 bg-gradient-to-r from-sky-600 to-blue-600 text-white font-semibold text-lg rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden">
+          <router-link v-if="!isLoggedIn" to="/login" class="group relative px-8 py-4 bg-gradient-to-r from-sky-600 to-blue-600 text-white font-semibold text-lg rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden cursor-pointer">
             <span class="relative z-10">Login</span>
             <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-sky-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </router-link>
-          <router-link v-if="!isLoggedIn" to="/signup" class="group relative px-8 py-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-semibold text-lg rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border-2 border-gray-200 dark:border-gray-600 hover:border-sky-300 dark:hover:border-sky-400">
+          <router-link v-if="!isLoggedIn" to="/signup" class="group relative px-8 py-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-semibold text-lg rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border-2 border-gray-200 dark:border-gray-600 hover:border-sky-300 dark:hover:border-sky-400 cursor-pointer">
             <span class="relative z-10">Sign Up</span>
             <div class="absolute inset-0 bg-gradient-to-r from-sky-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
           </router-link>
-          <router-link v-if="isLoggedIn" to="/profile" class="group relative px-8 py-4 bg-gradient-to-r from-sky-600 to-blue-600 text-white font-semibold text-lg rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden">
+          <router-link v-if="isLoggedIn" to="/profile" class="group relative px-8 py-4 bg-gradient-to-r from-sky-600 to-blue-600 text-white font-semibold text-lg rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden cursor-pointer">
             <span class="relative z-10">Go to Profile</span>
             <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-sky-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </router-link>
-          <button v-if="isLoggedIn" @click="handleLogout" class="group relative px-8 py-4 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold text-lg rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden">
+          <button v-if="isLoggedIn" @click="handleLogout" class="group relative px-8 py-4 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold text-lg rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden cursor-pointer">
             <span class="relative z-10">Log Out</span>
           </button>
         </div>
